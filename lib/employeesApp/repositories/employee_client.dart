@@ -36,9 +36,9 @@ class EmployeeClient {
 
       http.Response response = await client.post('$baseUrl/create',
           body: json.encode(employeeEntry.toJson()));
-          Map map = json.decode(response.body) as Map;
-          EntryResponseModel entryResponseModel = EntryResponseModel.fromJson(map);
-      return ();
+      Map map = json.decode(response.body) as Map;
+      EntryResponseModel entryResponseModel = EntryResponseModel.fromJson(map);
+      return (map);
     } catch (error) {
       print(error);
     }

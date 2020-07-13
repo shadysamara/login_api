@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:login_api_project/employeesApp/ui/screens/test_my_api.dart';
+import 'package:login_api_project/newsApp/providers/news_provider.dart';
+import 'package:login_api_project/newsApp/screens/screens/news_home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,10 +15,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData.dark(),
-      home: TestMyApi(),
+    return ChangeNotifierProvider<NewsProvider>(
+      create: (BuildContext context) {
+        return NewsProvider();
+      },
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData.dark(),
+        home: NewsHome(),
+      ),
     );
   }
 }
